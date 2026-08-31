@@ -1,6 +1,5 @@
 from marshmallow import Schema, fields, validate
 
-
 class ExerciseSchema(Schema):
     id = fields.Int(dump_only=True)
 
@@ -22,6 +21,12 @@ class ExerciseSchema(Schema):
 
     equipment_needed = fields.Bool(required=True)
 
+    workouts = fields.Nested(
+        "WorkoutSchema",
+        many=True,
+        dump_only=True,
+        exclude=("exercises", "workout_exercises")
+    )
 
 class WorkoutExerciseSchema(Schema):
     id = fields.Int(dump_only=True)
