@@ -1,6 +1,5 @@
 from marshmallow import Schema, fields, validate
 
-
 class ExerciseSchema(Schema):
     id = fields.Int(dump_only=True)
 
